@@ -68,15 +68,26 @@ const alpha = people.sort((a, b) => (a.split(', ')[1] > b.split(', ')[1]) ? 1 : 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
-const transportatiom = data.reduce((obj, item) => {
-    obj[item] = obj[item] + 1 || 1
-    return obj
-}, {})
-// console.log(transportatiom)
+// const transportatiom = data.reduce((obj, item) => {
+//     obj[item] = obj[item] + 1 || 1
+//     return obj
+// }, {})
+// // console.log(transportatiom)
+
+// Alternatives solutions
+// const transportatiom = data.reduce((obj, item) => (obj[item] += 1,obj), Object.fromEntries(data.map(m => [m, 0]))) // Object.fromEntries to convert any kind of pair array ou Map in a Object
+// const transportatiom = data.reduce((obj, item) => (obj[item] += 1, obj), Object.assign(...data.map(v => ({ [v]: 0 })))) // Object.assign convertinf the Array in Set collection
+// const transportatiom = data.reduce((obj, item) => obj.set(item, obj.get(item) + 1), new Map(data.map(m => [m, 0]))) // Map
+// const transportatiom = Object.fromEntries(data.reduce((obj, item) => obj.set(item, obj.get(item) + 1), new Map(data.map(m => [m, 0])))) // Convert Map in Object
+
+// Best solution
+const transportatiom = data.reduce((obj, item) => (obj[item] = obj[item] + 1 || 1, obj), {})
+console.table(transportatiom)
+
 
 // Ways to generate Objects from Arrays
 // let temp = Object.assign(...data.map(v => ({ [v]: 0 }))) // how to generate a Object from a array and iniciate with zero.
 // let temp2 = Object.fromEntries(data.map(m => [m, 0]))
 
-// Alternatives ways
-// .reduce((obj, item) => { obj[item] += 1; return obj }, Object.fromEntries(data.map(m => [m, 0])))
+// How to encapsulate all in one line using .reduce from a Map converting in Object
+// let obj = [...map.entries()].reduce((obj, [key, value]) => (obj[key] = value, obj), {});
