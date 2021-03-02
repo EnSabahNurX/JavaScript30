@@ -94,8 +94,9 @@ const dev = Object.assign({}, rick)
 // console.log(rick, dev)
 // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 
+
 // Best way do deep clone Objects
 const dev2 = JSON.parse(JSON.stringify(rick))
 dev2.name = 'changed'
 dev2.social.facebook = 'changed'
-console.log(rick, dev2)
+// console.log(rick, dev2)
