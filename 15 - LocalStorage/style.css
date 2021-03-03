@@ -10,9 +10,7 @@ html {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
@@ -61,12 +59,12 @@ h2 {
   display: none;
 }
 
-.plates input + label:before {
+.plates input+label:before {
   content: "⬜️";
   margin-right: 10px;
 }
 
-.plates input:checked + label:before {
+.plates input:checked+label:before {
   content: "🌮";
 }
 
@@ -78,4 +76,19 @@ h2 {
   padding: 10px;
   outline: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.check {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.check button {
+  padding: 5px;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
