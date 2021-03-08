@@ -12,6 +12,7 @@ container.appendChild(rect)
 
 function highlightLink() {
     // console.log(this)
+    rect.style.visibility = 'visible'
     const linkCoords = this.getBoundingClientRect()
     // console.log(linkCoords)
     const coords = {
@@ -36,4 +37,9 @@ function highlightLink() {
     rect.innerHTML = this.innerHTML
 }
 
+function out() {
+    rect.style.visibility = 'hidden'
+}
+
 triggers.forEach(a => a.addEventListener('mouseenter', highlightLink))
+triggers.forEach(a => a.addEventListener('mouseout', out))

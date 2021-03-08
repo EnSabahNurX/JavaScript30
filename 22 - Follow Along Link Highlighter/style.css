@@ -56,6 +56,8 @@ a {
   display: block;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 2%;
+  z-index: 0;
+  visibility: hidden;
 }
 
 .menu {
