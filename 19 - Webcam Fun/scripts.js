@@ -3,8 +3,6 @@ const canvas = document.querySelector('.photo');
 const ctx = canvas.getContext('2d');
 const strip = document.querySelector('.strip');
 const snap = document.querySelector('.snap');
-const cmin = document.querySelector('#cmin')
-const cmax = document.querySelector('#cmax')
 
 function getVideo() {
     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
@@ -99,32 +97,5 @@ function greenScreen(pixels) {
     return pixels
 }
 
-function hexToRGB(color) {
-    color = color.replace(/#/, '')
-        .match(/.{1,2}/ig)
-    return [
-        parseInt(color[0], 16),
-        parseInt(color[1], 16),
-        parseInt(color[2], 16)
-    ]
-}
-
-function updateColor(e) {
-    let colorCmin = hexToRGB(cmin.value)
-    let colorCmax = hexToRGB(cmax.value)
-    let colors = []
-    for (i = 0; i < 3; i++) {
-        colors = [...colors, colorCmin[i], colorCmax[i]]
-    }
-    document.querySelectorAll('.rgb input').forEach((input, idx) => {
-        input.value = colors[idx]
-        console.log(input.value)
-    })
-    console.log(colors)
-
-}
-
 getVideo()
 video.addEventListener('canplay', paintToCanvas)
-cmin.addEventListener('change', updateColor)
-cmax.addEventListener('change', updateColor)

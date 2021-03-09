@@ -12,7 +12,7 @@ container.appendChild(rect)
 
 function highlightLink() {
     // console.log(this)
-    rect.style.visibility = 'visible'
+    // rect.style.visibility = 'visible'
     const linkCoords = this.getBoundingClientRect()
     // console.log(linkCoords)
     const coords = {
@@ -34,7 +34,8 @@ function highlightLink() {
     rect.style.width = `${coordsRect.width}px`
     rect.style.height = `${coordsRect.height}px`
     rect.style.transform = `translate(${coordsRect.left}px, ${coordsRect.top}px)`
-    rect.innerHTML = this.innerHTML
+    rect.innerHTML = (this.innerHTML + '<br>').repeat(5)
+    rect.style.visibility = 'visible'
 }
 
 function out() {

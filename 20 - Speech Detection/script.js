@@ -2,6 +2,7 @@ window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecogn
 const recognition = new SpeechRecognition()
 recognition.interimResults = true
 recognition.lang = 'en-US'
+// recognition.lang = 'pt-BR'
 
 
 let p = document.createElement('p')
