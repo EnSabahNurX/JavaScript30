@@ -3,6 +3,7 @@ const scoreBoard = document.querySelector('.score')
 const moles = document.querySelectorAll('.mole')
 const tab = document.querySelector('#battle-log')
 let lastHole
+let lastBonk
 let timeUp = false
 let score = 0
 tab.innerHTML = ''
@@ -50,11 +51,31 @@ function startGame() {
 
 function bonk(e) {
     if (!e.isTrusted) return // anti-cheaters
-    if (!timeUp && (e.path[1].classList != lastHole.classList)) {// avoid double bonk at the same mole
-        score++
-        scoreBoard.textContent = score
-        this.classList.remove('up')
+
+    // if (!timeUp && (e.path[1].classList != lastHole.classList)) {// avoid double bonk at the same mole
+    //     score++
+    //     scoreBoard.textContent = score
+    //     this.classList.remove('up')
+    // }
+    if (lastBonk) {
+        if (!timeUp && (e.path[1].classList != lastBonk.path[1].classList)) {// avoid double bonk at the same mole
+            score++
+            scoreBoard.textContent = score
+            this.classList.remove('up')
+            lastBonk = e
+            console.log(lastBonk.path[1].classList, e.path[1].classList)
+        }
+    } else {
+        if (!timeUp) {// avoid double bonk at the same mole
+            score++
+            scoreBoard.textContent = score
+            this.classList.remove('up')
+            lastBonk = e
+            console.log(lastBonk.path[1].classList, e.path[1].classList)
+        }
     }
+
+
 }
 
 moles.forEach(mole => mole.addEventListener('click', bonk))
